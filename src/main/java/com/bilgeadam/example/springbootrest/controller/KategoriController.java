@@ -20,6 +20,25 @@ public class KategoriController {
         this.kategoriService = kategoriService;
     }
 
+   /*
+
+   {
+        "baslik":"Bilim Kurgu",
+            "tur":"Roman",
+            "kitap":{
+        "adi":"Olasılıksız",
+                "yazari":"Adam Fawer",
+                "kitapBilgi":{
+            "ciltNo":10,
+                    "fiyat":45.0,
+                    "yayinTarihi":"2012-05-05",
+                    "yayinEvi":"Karekök",
+                    "sayfaSayisi":450
+        }
+    }
+    }
+
+    */
     @PostMapping(value = "/kaydet")
     public Kategori kaydet(@RequestBody Kategori kategori){
 
