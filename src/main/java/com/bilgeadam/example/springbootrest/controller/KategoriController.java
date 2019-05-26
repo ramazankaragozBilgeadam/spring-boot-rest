@@ -6,6 +6,8 @@ import com.bilgeadam.example.springbootrest.service.KategoriService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "kategori")
 public class KategoriController {
@@ -46,6 +48,26 @@ public class KategoriController {
     public Kategori guncelle(@RequestBody Kategori kategori){
 
         return kategoriService.guncelle(kategori);
+    }
+
+    @PostMapping(value = "/sil")
+    public void sil(@RequestBody Kategori kategori){
+        kategoriService.sil(kategori);
+    }
+
+    @DeleteMapping(value = "/silById")
+    public void sil(@RequestParam(value = "id")Long id){
+        kategoriService.silById(id);
+    }
+
+    @GetMapping(value = "/findAll")
+    public List<Kategori> listeGetir(){
+        return kategoriService.findAll();
+    }
+
+    @GetMapping(value = "/findById/{id}")
+    public Kategori findById(@PathVariable(value = "id")Long id){
+        return kategoriService.findById(id);
     }
 
 
