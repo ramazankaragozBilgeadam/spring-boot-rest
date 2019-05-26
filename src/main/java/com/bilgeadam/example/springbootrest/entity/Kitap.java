@@ -9,9 +9,9 @@ import javax.persistence.*;
 @Table(name = "kitap")
 public class Kitap extends BaseEntity{
 
-    @Column(name = "adi")
+    @Column(name = "adi",nullable = false,length = 20)
     private String adi;
-    @Column(name = "yazari")
+    @Column(name = "yazari",nullable = false,length = 30)
     private String yazari;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "kitap_bilgi_id")
