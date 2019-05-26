@@ -32,29 +32,40 @@ public class KategoriServiceImpl implements KategoriService {
     @Transactional
     @Override
     public Kategori guncelle(Kategori kategori) {
-        if (kategori==null){
-            return kategori;
+        if (kategori==null||kategori.getId()==null){
+            return null;
         }
         return kategoriDAO.save(kategori);
     }
 
+    @Transactional
     @Override
     public void sil(Kategori kategori) {
-
+        if (kategori.getId()!=null){
+            kategoriDAO.delete(kategori);
+        }
     }
 
+    @Transactional
     @Override
     public void silById(Long kategoriId) {
-
+        if (kategoriId!=null){
+            kategoriDAO.deleteById(kategoriId);
+        }
     }
 
+    @Transactional
     @Override
     public List<Kategori> findAll() {
-        return null;
+        return kategoriDAO.findAll();
     }
 
+    @Transactional
     @Override
     public Kategori findById(Long kategoriId) {
+        if (kategoriId!=null){
+            return kategoriDAO.findById(kategoriId).get();
+        }
         return null;
     }
 }
