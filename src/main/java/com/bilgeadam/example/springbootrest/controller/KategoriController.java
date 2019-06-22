@@ -75,5 +75,10 @@ public class KategoriController {
         return kategoriService.findAllByKitapAdi(kitapAdi);
     }
 
+    @GetMapping(value = "/findByBaslik/{baslik}")
+    public Kategori findByBaslik(@PathVariable(value = "baslik")String baslik){
+        return kategoriService.findByBaslik(baslik);
+    }
+
 
 }

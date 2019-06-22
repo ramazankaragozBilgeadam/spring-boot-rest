@@ -1,13 +1,16 @@
 package com.bilgeadam.example.springbootrest.service;
 
+import com.bilgeadam.example.springbootrest.core.BaslikNotFoundException;
 import com.bilgeadam.example.springbootrest.core.KitapAdiNotFoundException;
 import com.bilgeadam.example.springbootrest.dao.KategoriDAO;
 import com.bilgeadam.example.springbootrest.entity.Kategori;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 //@Transactional
 @Service
@@ -83,5 +86,29 @@ public class KategoriServiceImpl implements KategoriService {
         return kategoriList;
 
 
+    }
+
+    @Override
+    public Kategori findByBaslik(String baslik) {
+
+        Optional<Kategori> kategoriOptional=kategoriDAO.findByBaslik(baslik);
+
+       /* Kategori kategori=kategoriDAO.findByBaslik(baslik).get();*/
+
+        if (kategoriOptional.isPresent()){
+            System.out.println(baslik+" İsimli Kategori Mevcut.");
+        }else {
+            Kategori yeniKategori=new Kategori();
+            yeniKategori.setBaslik("Yeni Kategori");
+            yeniKategori.setTur("Yeni Tur");
+            return kategoriOptional.orElse(yeniKategori);
+        }
+
+
+        return kategoriOptional
+                .orElseThrow(()-> new BaslikNotFoundException(baslik+" İsimli Kategori Bulunamadı!"));
+
+
+        //return kategori;
     }
 }

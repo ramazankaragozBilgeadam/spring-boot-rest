@@ -17,4 +17,12 @@ public class KitapAdiNotFoundAdvice {
         ex.printStackTrace();
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(BaslikNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String baslikNotFoundException(BaslikNotFoundException ex){
+        ex.printStackTrace();
+        return ex.getMessage();
+    }
 }

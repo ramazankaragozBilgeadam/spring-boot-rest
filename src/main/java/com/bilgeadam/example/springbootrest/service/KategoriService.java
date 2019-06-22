@@ -13,5 +13,6 @@ public interface KategoriService {
     List<Kategori> findAll();
     Kategori findById(Long kategoriId);
     List<Kategori> findAllByKitapAdi(String kitapAdi);
+    Kategori findByBaslik(String baslik);
 
 }
