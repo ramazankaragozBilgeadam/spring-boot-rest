@@ -12,5 +12,6 @@ public interface KategoriService {
     void silById(Long kategoriId);
     List<Kategori> findAll();
     Kategori findById(Long kategoriId);
+    List<Kategori> findAllByKitapAdi(String kitapAdi);
 
 }

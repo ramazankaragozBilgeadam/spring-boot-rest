@@ -68,4 +68,10 @@ public class KategoriServiceImpl implements KategoriService {
         }
         return null;
     }
+
+    @Transactional
+    @Override
+    public List<Kategori> findAllByKitapAdi(String kitapAdi) {
+        return kategoriDAO.findAllByKitap_Adi(kitapAdi);
+    }
 }

@@ -40,7 +40,6 @@ public class KategoriController {
     */
     @PostMapping(value = "/kaydet")
     public Kategori kaydet(@RequestBody Kategori kategori){
-
         return kategoriService.kaydet(kategori);
     }
 

@@ -1,5 +1,6 @@
 package com.bilgeadam.example.springbootrest.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "kategori")
 public class Kategori extends BaseEntity {
 
+    @JsonProperty("kategoriIsmi")
     @Column(name = "baslik",length = 15,nullable = false)
     private String baslik;
     @Column(name = "tur",length = 20,nullable = false)

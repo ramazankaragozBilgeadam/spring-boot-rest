@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface KategoriDAO extends JpaRepository<Kategori,Long> {
 
-
-    List<Kategori> findAllByKitap_Adi(String adi);
+    List<Kategori> findAllByKitap_Adi(String kitapAdi);
 }
