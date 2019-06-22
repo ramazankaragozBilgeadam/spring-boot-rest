@@ -70,4 +70,10 @@ public class KategoriController {
     }
 
 
+    @GetMapping(value = "/findAllByKitapAdi")
+    public List<Kategori> findAllByKitapAdi(@RequestParam(value = "kitapAdi")String kitapAdi){
+        return kategoriService.findAllByKitapAdi(kitapAdi);
+    }
+
+
 }
