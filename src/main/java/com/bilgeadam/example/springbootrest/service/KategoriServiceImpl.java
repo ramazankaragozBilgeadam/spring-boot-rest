@@ -1,5 +1,6 @@
 package com.bilgeadam.example.springbootrest.service;
 
+import com.bilgeadam.example.springbootrest.core.KitapAdiNotFoundException;
 import com.bilgeadam.example.springbootrest.dao.KategoriDAO;
 import com.bilgeadam.example.springbootrest.entity.Kategori;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,15 @@ public class KategoriServiceImpl implements KategoriService {
     @Transactional
     @Override
     public List<Kategori> findAllByKitapAdi(String kitapAdi) {
-        return kategoriDAO.findAllByKitap_Adi(kitapAdi);
+
+        List<Kategori> kategoriList=kategoriDAO.findAllByKitap_Adi(kitapAdi);
+
+        if (kategoriList.isEmpty()){
+            throw new KitapAdiNotFoundException(kitapAdi+" İsimli Kitap Kategoride Bulunamadı.");
+        }
+
+        return kategoriList;
+
+
     }
 }
